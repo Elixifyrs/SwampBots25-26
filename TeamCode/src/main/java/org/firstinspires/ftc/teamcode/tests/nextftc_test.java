@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.tests;
 
-import static com.rowanmcalpin.nextftc.ftc.OpModeData.telemetry;
 import androidx.annotation.NonNull;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -11,7 +10,6 @@ import dev.nextftc.core.components.BindingsComponent;
 import dev.nextftc.core.components.SubsystemComponent;
 import dev.nextftc.ftc.components.BulkReadComponent;
 import dev.nextftc.hardware.driving.*;
-import org.apache.commons.math3.stat.descriptive.moment.SemiVariance;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.ftc.Gamepads;
 import dev.nextftc.ftc.NextFTCOpMode;
@@ -71,3 +69,12 @@ public class nextftc_test extends NextFTCOpMode {
 
 
 }
+
+
+
+// DEPENCIES FOR NEXTFTC 0.6
+/*
+    implementation 'com.rowanmcalpin.nextftc:core:0.6.2'
+    implementation 'com.rowanmcalpin.nextftc:ftc:0.6.2'
+    implementation 'com.rowanmcalpin.nextftc:pedro:0.6.2' // Remove if you don't intend to use PedroPathing
+ */
