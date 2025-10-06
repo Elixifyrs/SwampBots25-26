@@ -1,10 +1,9 @@
 package org.firstinspires.ftc.teamcode.tests;
-import com.rowanmcalpin.nextftc.core.Subsystem;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.hardware.impl.MotorEx;
 import dev.nextftc.hardware.powerable.SetPower;
-
-public class TestIntake extends Subsystem {
+import dev.nextftc.core.subsystems.Subsystem;
+public class TestIntake implements Subsystem {
 
     public static final TestIntake INSTANCE = new TestIntake();
     public MotorEx motor;
