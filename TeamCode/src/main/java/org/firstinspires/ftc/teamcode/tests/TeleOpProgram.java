@@ -14,9 +14,9 @@ import dev.nextftc.hardware.impl.Direction;
 import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
 
-@TeleOp
-public class nextftc_test extends NextFTCOpMode {
-    public nextftc_test() {
+@TeleOp(name = "NextFTC TeleOp Program Java")
+public class TeleOpProgram extends NextFTCOpMode {
+    public TeleOpProgram() {
         addComponents(
                 new SubsystemComponent(),
                 BulkReadComponent.INSTANCE,
@@ -25,16 +25,16 @@ public class nextftc_test extends NextFTCOpMode {
     }
 
     // change the names and directions to suit your robot
-    private final MotorEx frontLeftMotor = new MotorEx("leftFront");
-    private final MotorEx frontRightMotor = new MotorEx("rightFront");
-    private final MotorEx backLeftMotor = new MotorEx("leftBack");
-    private final MotorEx backRightMotor = new MotorEx("rightBack");
+    private final MotorEx frontLeftMotor = new MotorEx("leftFront").reversed();
+    private final MotorEx frontRightMotor = new MotorEx("rightFront").reversed();
+    private final MotorEx backLeftMotor = new MotorEx("leftBack").reversed();
+    private final MotorEx backRightMotor = new MotorEx("rightBack").reversed();
     private IMUEx imu = new IMUEx("imu", Direction.UP, Direction.RIGHT).zeroed();
 
 
     @Override
     public void onStartButtonPressed() {
-        //field centric
+        //robot centric
         Command driverControlled = new MecanumDriverControlled(
                 frontLeftMotor,
                 frontRightMotor,
