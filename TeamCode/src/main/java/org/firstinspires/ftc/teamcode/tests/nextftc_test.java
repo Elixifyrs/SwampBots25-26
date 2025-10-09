@@ -14,7 +14,7 @@ import dev.nextftc.hardware.impl.Direction;
 import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
 
-@TeleOp
+@TeleOp (name = "robotic centric")
 public class nextftc_test extends NextFTCOpMode {
     public nextftc_test() {
         addComponents(
@@ -25,11 +25,11 @@ public class nextftc_test extends NextFTCOpMode {
     }
 
     // change the names and directions to suit your robot
-    private final MotorEx frontLeftMotor = new MotorEx("leftFront");
+    private final MotorEx frontLeftMotor = new MotorEx("leftFront").reversed();
     private final MotorEx frontRightMotor = new MotorEx("rightFront");
-    private final MotorEx backLeftMotor = new MotorEx("leftBack");
+    private final MotorEx backLeftMotor = new MotorEx("leftBack").reversed();
     private final MotorEx backRightMotor = new MotorEx("rightBack");
-    private IMUEx imu = new IMUEx("imu", Direction.UP, Direction.RIGHT).zeroed();
+    private IMUEx imu = new IMUEx("imu", Direction.BACKWARD, Direction.UP).zeroed();
 
 
     @Override
@@ -40,10 +40,14 @@ public class nextftc_test extends NextFTCOpMode {
                 frontRightMotor,
                 backLeftMotor,
                 backRightMotor,
-                Gamepads.gamepad1().leftStickY(),
+                Gamepads.gamepad1().leftStickY().negate(),
                 Gamepads.gamepad1().leftStickX(),
                 Gamepads.gamepad1().rightStickX()
         );
         driverControlled.schedule();
+
+        if(gamepad1.dpad_up){
+            imu.zeroed();
+        }
     }
 }
