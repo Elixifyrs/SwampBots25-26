@@ -16,12 +16,11 @@ public class TestIntake implements Subsystem {
       return new SetPower(motor,1);
 
     }
-
-
     @Override
     public void initialize() {
         //may have to reverse depending on the robot
+        //tells what motor from hardwaremap will have to change to what it says on driver hub
+
         motor = new MotorEx("intake_motor").brakeMode();
-        //tells what motor from hardwaremap
     }
 }
