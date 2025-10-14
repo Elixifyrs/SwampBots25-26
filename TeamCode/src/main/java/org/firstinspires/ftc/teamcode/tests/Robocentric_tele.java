@@ -2,11 +2,9 @@ package org.firstinspires.ftc.teamcode.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import dev.nextftc.bindings.Range;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.components.BindingsComponent;
 import dev.nextftc.core.components.SubsystemComponent;
-import dev.nextftc.ftc.GamepadEx;
 import dev.nextftc.ftc.Gamepads;
 import dev.nextftc.ftc.NextFTCOpMode;
 import dev.nextftc.ftc.components.BulkReadComponent;
@@ -16,9 +14,9 @@ import dev.nextftc.hardware.impl.Direction;
 import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
 
-@TeleOp(name = "Field Centric")
-public class TeleOpProgram extends NextFTCOpMode {
-    public TeleOpProgram() {
+@TeleOp(name = "robot Centric")
+public class Robocentric_tele extends NextFTCOpMode {
+    public Robocentric_tele() {
         addComponents(
                 new SubsystemComponent(),
                 BulkReadComponent.INSTANCE,

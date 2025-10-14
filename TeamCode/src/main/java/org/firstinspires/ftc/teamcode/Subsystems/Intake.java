@@ -1,18 +1,19 @@
-package org.firstinspires.ftc.teamcode.tests;
+package org.firstinspires.ftc.teamcode.Subsystems;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.hardware.impl.MotorEx;
 import dev.nextftc.hardware.powerable.SetPower;
 import dev.nextftc.core.subsystems.Subsystem;
-public class TestIntake implements Subsystem {
+public class Intake implements Subsystem {
 
-    public static final TestIntake INSTANCE = new TestIntake();
+    public static final Intake INSTANCE = new Intake();
     public MotorEx motor;
 
     public String name = "intake_servo";
 
-    private TestIntake() { }
+    private Intake() { }
 
     public Command spin(){
+      //set power = spin
       return new SetPower(motor,1);
 
     }
