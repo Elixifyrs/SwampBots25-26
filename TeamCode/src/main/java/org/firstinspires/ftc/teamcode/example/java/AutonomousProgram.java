@@ -17,7 +17,7 @@ import org.firstinspires.ftc.vision.opencv.ColorBlobLocatorProcessor;
 @Autonomous(name = "NextFTC Autonomous Program Java")
 public class AutonomousProgram extends NextFTCOpMode {
     public AutonomousProgram() {
-        supgiter(Claw.INSTANCE, Lift.INSTANCE);
+        super(Claw.INSTANCE, Lift.INSTANCE);
     }
 
     public Command firstRoutine() {
