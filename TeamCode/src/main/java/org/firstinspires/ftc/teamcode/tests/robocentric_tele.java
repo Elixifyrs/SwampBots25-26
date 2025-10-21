@@ -14,9 +14,9 @@ import dev.nextftc.hardware.impl.Direction;
 import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
 
-@TeleOp (name = "robotic centric")
-public class nextftc_test extends NextFTCOpMode {
-    public nextftc_test() {
+@TeleOp(name = "robot Centric")
+public class robocentric_tele extends NextFTCOpMode {
+    public robocentric_tele() {
         addComponents(
                 new SubsystemComponent(),
                 BulkReadComponent.INSTANCE,
@@ -32,9 +32,11 @@ public class nextftc_test extends NextFTCOpMode {
     private IMUEx imu = new IMUEx("imu", Direction.BACKWARD, Direction.UP).zeroed();
 
 
+
+
     @Override
     public void onStartButtonPressed() {
-        //field centric
+        //robot centric
         Command driverControlled = new MecanumDriverControlled(
                 frontLeftMotor,
                 frontRightMotor,
@@ -42,7 +44,8 @@ public class nextftc_test extends NextFTCOpMode {
                 backRightMotor,
                 Gamepads.gamepad1().leftStickY().negate(),
                 Gamepads.gamepad1().leftStickX(),
-                Gamepads.gamepad1().rightStickX()
+                Gamepads.gamepad1().rightStickX(),
+                new FieldCentric(imu)
         );
         driverControlled.schedule();
 
@@ -50,4 +53,5 @@ public class nextftc_test extends NextFTCOpMode {
             imu.zeroed();
         }
     }
+
 }

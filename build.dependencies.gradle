@@ -2,6 +2,7 @@ repositories {
     mavenCentral()
     google() // Needed for androidx
     maven { url = "https://maven.rowanmcalpin.com/" }
+    maven { url = "https://mymaven.bylazar.com/releases" }
     maven { url = "https://maven.pedropathing.com/" } // Remove if you don't intend to use PedroPathing
     maven { url = "https://maven.brott.dev/" } // Remove if you don't intend to use the FTC Dashboard (required if using PedroPathing)
 }
@@ -21,6 +22,10 @@ dependencies {
     implementation 'com.pedropathing:pedro:1.0.9' // Remove if you don't intend to use PedroPathing
     implementation 'com.acmerobotics.dashboard:dashboard:0.4.16' // Remove if you don't intend to use the FTC Dashboard (required if using PedroPathing)
     implementation 'dev.nextftc:bindings:1.0.1'
+    implementation 'com.pedropathing:ftc:2.0.3'
+    implementation 'com.pedropathing:telemetry:1.0.0'
+    implementation 'com.bylazar:fullpanels:1.0.6'
+
 }
 
 
