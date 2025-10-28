@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 
 import dev.nextftc.bindings.Range;
 import dev.nextftc.control.ControlSystem;
+import dev.nextftc.control.KineticState;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.subsystems.Subsystem;
 import dev.nextftc.ftc.Gamepads;
@@ -29,5 +30,15 @@ public class Lift implements Subsystem {
 
 
     //should make it so that the control makes it so it stays elevated
+    // unit is ticks
     public Command lift = new RunToPosition(controlSystem, 1000).requires(this);
+
+    @Override
+    public void periodic(){
+        lift_motor.setPower(
+                controlSystem.calculate(
+                        new KineticState(lift_motor.getCurrentPosition(), lift_motor.getVelocity(), lift_motor.getState().getAcceleration())
+                )
+        );
+    }
 }

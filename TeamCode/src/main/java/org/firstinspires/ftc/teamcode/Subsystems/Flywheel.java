@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 
 import dev.nextftc.bindings.Range;
 import dev.nextftc.control.ControlSystem;
+import dev.nextftc.control.KineticState;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.commands.delays.Delay;
 import dev.nextftc.core.commands.groups.ParallelGroup;
@@ -37,6 +38,21 @@ public class Flywheel implements Subsystem {
         right = new MotorEx("right_flywheel").brakeMode().reversed();
     }
 
-    //have to figure out the power @ certain pos when pedro is done
-    public Command shoot = new RunToVelocity(controller,1000).requires(this);
+    //the number is ticks or Velocity in (ticks/s)  28 tikcs per rev
+    public Command shoot = new RunToVelocity(controller,1700).requires(this);
+
+
+    @Override
+    public void periodic(){
+        left.setPower(
+                controller.calculate(
+                        new KineticState(left.getCurrentPosition(),left.getVelocity(),left.getState().getAcceleration())
+                )
+        );
+        right.setPower(
+                controller.calculate(
+                        new KineticState(right.getCurrentPosition(),right.getVelocity(),right.getState().getAcceleration())
+                )
+        );
+    }
 }
