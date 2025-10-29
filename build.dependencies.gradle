@@ -8,14 +8,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.firstinspires.ftc:Inspection:10.2.0'
-    implementation 'org.firstinspires.ftc:Blocks:10.2.0'
-    implementation 'org.firstinspires.ftc:RobotCore:10.2.0'
-    implementation 'org.firstinspires.ftc:RobotServer:10.2.0'
-    implementation 'org.firstinspires.ftc:OnBotJava:10.2.0'
-    implementation 'org.firstinspires.ftc:Hardware:10.2.0'
-    implementation 'org.firstinspires.ftc:FtcCommon:10.2.0'
-    implementation 'org.firstinspires.ftc:Vision:10.2.0'
+    implementation 'org.firstinspires.ftc:Inspection:11.0.0'
+    implementation 'org.firstinspires.ftc:Blocks:11.0.0'
+    implementation 'org.firstinspires.ftc:RobotCore:11.0.0'
+    implementation 'org.firstinspires.ftc:RobotServer:11.0.0'
+    implementation 'org.firstinspires.ftc:OnBotJava:11.0.0'
+    implementation 'org.firstinspires.ftc:Hardware:11.0.0'
+    implementation 'org.firstinspires.ftc:FtcCommon:11.0.0'
+    implementation 'org.firstinspires.ftc:Vision:11.0.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'dev.nextftc:ftc:1.0.0'
     implementation 'dev.nextftc:hardware:1.0.0' // If you would like to use the hardware module
@@ -24,16 +24,14 @@ dependencies {
     implementation 'dev.nextftc:bindings:1.0.1'
     implementation 'com.pedropathing:ftc:2.0.3'
     implementation 'com.pedropathing:telemetry:1.0.0'
-    implementation 'com.bylazar:fullpanels:1.0.6'
-    implementation "com.bylazar:field:1.0.3"
-    implementation "com.bylazar:capture:1.0.2"
-    implementation "com.bylazar:configurables:1.0.3"
-    implementation "com.bylazar:field:1.0.3"
     implementation "com.bylazar:fullpanels:1.0.8"
     implementation "com.bylazar:graph:1.0.3"
     implementation "com.bylazar:limelightproxy:1.0.2"
 
 }
+
+
+
 
 
 // DEPENCIES FOR NEXTFTC 0.6
