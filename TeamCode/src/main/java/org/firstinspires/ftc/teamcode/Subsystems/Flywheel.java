@@ -41,6 +41,8 @@ public class Flywheel implements Subsystem {
     //the number is ticks or Velocity in (ticks/s)  28 tikcs per rev
     public Command shoot = new RunToVelocity(controller,1700).requires(this);
 
+    public Command stop = new RunToVelocity(controller, 0).requires(this);
+
 
     @Override
     public void periodic(){

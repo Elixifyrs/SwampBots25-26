@@ -14,7 +14,19 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.Subsystems.Flywheel;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Subsystems.Lift;
+import org.firstinspires.ftc.teamcode.Subsystems.Loader;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+
+import java.time.Duration;
+
+import dev.nextftc.core.commands.delays.Delay;
+import dev.nextftc.core.commands.groups.CommandGroup;
+import dev.nextftc.core.commands.groups.ParallelGroup;
+import dev.nextftc.core.commands.groups.SequentialGroup;
+import dev.nextftc.core.components.BindingsComponent;
+import dev.nextftc.core.components.SubsystemComponent;
+import dev.nextftc.ftc.NextFTCOpMode;
+import dev.nextftc.ftc.components.BulkReadComponent;
 
 /*
 *
@@ -25,8 +37,15 @@ import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 *
 * */
 @Autonomous(name = "TestAuto", group = "Examples")
-public class autoOp extends OpMode {
+public class autoOp extends NextFTCOpMode {
 
+    public autoOp(){
+        addComponents(
+                new SubsystemComponent(Intake.INSTANCE, Flywheel.INSTANCE, Loader.INSTANCE, Lift.INSTANCE),
+                BulkReadComponent.INSTANCE,
+                BindingsComponent.INSTANCE
+        );
+    }
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private Intake intake;
@@ -46,8 +65,6 @@ public class autoOp extends OpMode {
     private final Pose endpickup2 = new Pose(115,60, Math.toRadians(0));
     private final Pose objects3 = new Pose(96,36,Math.toRadians(0));
     private final Pose endpickup3 = new Pose(115,36, Math.toRadians(0));
-
-
 
     private PathChain moveToShoot, moveToObjects1, pickupObjects1, moveToShoot1, moveToObjects2, pickupObjects2, moveToShoot2, moveToObjects3, pickupObjects3, moveToShoot3;
 
@@ -113,6 +130,14 @@ public class autoOp extends OpMode {
                     follower.followPath(moveToShoot, true);
                     //pause
                     //flywheel shoot
+                    new SequentialGroup(
+                    Flywheel.INSTANCE.shoot,
+                    new Delay(String.valueOf(Duration.ofSeconds(2))),
+                    Loader.INSTANCE.push,
+                    Flywheel.INSTANCE.stop,
+                    Loader.INSTANCE.reset
+                    );
+
                     setPathState(1);
                     break;
                 case 1:
@@ -197,7 +222,7 @@ public class autoOp extends OpMode {
 
     /** This is the main loop of the OpMode, it will run repeatedly after clicking "Play". **/
     @Override
-    public void loop() {
+    public void onUpdate() {
 
         // These loop the movements of the robot, these must be called continuously in order to work
         follower.update();
@@ -213,7 +238,7 @@ public class autoOp extends OpMode {
 
     /** This method is called once at the init of the OpMode. **/
     @Override
-    public void init() {
+    public void onInit() {
         pathTimer = new Timer();
         opmodeTimer = new Timer();
         opmodeTimer.resetTimer();
@@ -226,20 +251,22 @@ public class autoOp extends OpMode {
     }
 
     /** This method is called continuously after Init while waiting for "play". **/
-    @Override
-    public void init_loop() {}
+  /*  @Override
+    public void periodic() {
 
+    }
+*/
     /** This method is called once at the start of the OpMode.
      * It runs all the setup actions, including building paths and starting the path system **/
     @Override
-    public void start() {
+    public void onStartButtonPressed() {
         opmodeTimer.resetTimer();
         setPathState(0);
     }
 
     /** We do not use this because everything should automatically disable **/
     @Override
-    public void stop() {}
+    public void onStop() {}
 
 
 

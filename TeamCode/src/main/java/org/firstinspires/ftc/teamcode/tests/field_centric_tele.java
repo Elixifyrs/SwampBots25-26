@@ -33,7 +33,7 @@ public class field_centric_tele extends NextFTCOpMode {
     private final MotorEx frontLeftMotor = new MotorEx("leftFront").reversed();
     private final MotorEx frontRightMotor = new MotorEx("rightFront");
     private final MotorEx backLeftMotor = new MotorEx("leftBack").reversed();
-    private final MotorEx backRightMotor = new MotorEx("rightBack");
+    private final MotorEx backRightMotor = new MotorEx("rightRear");
     private IMUEx imu = new IMUEx("imu", Direction.BACKWARD, Direction.UP).zeroed();
 
 
