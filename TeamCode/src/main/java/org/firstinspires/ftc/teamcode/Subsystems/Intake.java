@@ -13,9 +13,6 @@ public class Intake implements Subsystem {
 
     public String name = "intake_servo";
 
-    //for pushing ball into flywheel
-    private ServoEx pusher;
-
 
     private Intake() { }
 
@@ -24,12 +21,8 @@ public class Intake implements Subsystem {
       return new SetPower(motor,1);
     }
 
-    public Command ball_prep(){
-        return new SetPosition(pusher, .5);
-    }
-
-    public Command reset_ball_prep(){
-        return new SetPosition(pusher, 0);
+    public Command stop(){
+        return new SetPower(motor, 0);
     }
 
     @Override
@@ -38,8 +31,5 @@ public class Intake implements Subsystem {
         //tells what motor from hardwaremap will have to change to what it says on driver hub
 
         motor = new MotorEx("intake_motor").brakeMode();
-
-        //for pushing the ball into flywheel
-        pusher = new ServoEx("name");
     }
 }

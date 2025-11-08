@@ -132,7 +132,7 @@ public class autoOp extends NextFTCOpMode {
                     //flywheel shoot
                     new SequentialGroup(
                     Flywheel.INSTANCE.shoot,
-                    new Delay(String.valueOf(Duration.ofSeconds(2))),
+                    new Delay(3),
                     Loader.INSTANCE.push,
                     Flywheel.INSTANCE.stop,
                     Loader.INSTANCE.reset
@@ -142,9 +142,12 @@ public class autoOp extends NextFTCOpMode {
                     break;
                 case 1:
                     if(!follower.isBusy()){
-                        follower.followPath(moveToObjects1, true);
                         //start intake
+                        Intake.INSTANCE.spin();
+                        follower.followPath(moveToObjects1, true);
                         setPathState(2);
+                        new Delay(.5);
+                        Intake.INSTANCE.stop();
                     }
                     break;
                 case 2:
