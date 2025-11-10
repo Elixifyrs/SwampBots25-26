@@ -17,16 +17,17 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Constants {
 
     public static FollowerConstants followerConstants = new FollowerConstants()
-            .mass(6.08388555)
-            .forwardZeroPowerAcceleration(-41.278)
-            .lateralZeroPowerAcceleration(-59.7819)
+            .mass(11.5)
+            .forwardZeroPowerAcceleration(-53.686793658117935)
+            .lateralZeroPowerAcceleration(-71.77801)
             .useSecondaryTranslationalPIDF(false)
             .useSecondaryHeadingPIDF(false)
             .useSecondaryDrivePIDF(false)
             .centripetalScaling(0.0005)
-            .translationalPIDFCoefficients(new com.pedropathing.control.PIDFCoefficients(0.1, 0, 0.01, 0))
-            .headingPIDFCoefficients(new PIDFCoefficients(2, 0, 0.1, 0))
+            .translationalPIDFCoefficients(new com.pedropathing.control.PIDFCoefficients(0.12, 0, 0.01, 0.02))
+            .headingPIDFCoefficients(new PIDFCoefficients(1.6, 0, 0.1, .02))
             .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.1, 0, 0, 0.6, 0));
+
 
     public static MecanumConstants driveConstants = new MecanumConstants()
             .leftFrontMotorName("leftFront")
@@ -37,13 +38,13 @@ public class Constants {
             .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
             .rightFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
             .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD)
-            .xVelocity(57.8741)
-            .yVelocity(52.295);
+            .xVelocity(52.41567608362866)
+            .yVelocity(30.88);
 
     public static ThreeWheelIMUConstants localizerConstants = new ThreeWheelIMUConstants()
-            .forwardTicksToInches(0.0029754342)
-            .strafeTicksToInches(0.00217768035)
-            .turnTicksToInches(0.0033)
+            .forwardTicksToInches(0.002980426565529629)
+            .strafeTicksToInches(0.002980426565529629)
+            .turnTicksToInches(0.00208970)
             .leftPodY(7)
             .rightPodY(-7)
             .strafePodX(-6.5)
@@ -54,7 +55,7 @@ public class Constants {
             .rightEncoderDirection(Encoder.FORWARD)
             .strafeEncoderDirection(Encoder.REVERSE)
             .IMU_HardwareMapName("imu")
-            //the intake is front
+            //the intake is back
             .IMU_Orientation(new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.RIGHT,
                     RevHubOrientationOnRobot.UsbFacingDirection.FORWARD));
 
