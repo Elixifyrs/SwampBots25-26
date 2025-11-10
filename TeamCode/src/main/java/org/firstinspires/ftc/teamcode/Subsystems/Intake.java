@@ -11,7 +11,7 @@ public class Intake implements Subsystem {
     public static final Intake INSTANCE = new Intake();
     private MotorEx motor;
 
-    public String name = "intake_servo";
+    public String name = "intake";
 
 
     private Intake() { }
@@ -30,6 +30,6 @@ public class Intake implements Subsystem {
         //may have to reverse depending on the robot
         //tells what motor from hardwaremap will have to change to what it says on driver hub
 
-        motor = new MotorEx("intake_motor").brakeMode();
+        motor = new MotorEx("intake").brakeMode();
     }
 }

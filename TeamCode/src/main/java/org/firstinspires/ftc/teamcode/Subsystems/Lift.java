@@ -25,7 +25,7 @@ public class Lift implements Subsystem {
 
     @Override
     public void initialize(){
-        lift_motor = new MotorEx("lift_motor");
+        lift_motor = new MotorEx("lift");
     }
 
 

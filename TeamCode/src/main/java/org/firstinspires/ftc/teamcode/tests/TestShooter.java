@@ -23,10 +23,21 @@ public class TestShooter extends NextFTCOpMode {
         );
     }
 
+    @Override
+    public void onInit(){
+
+    }
+    @Override public void onWaitForStart() { }
+
 
     @Override
     public void onStartButtonPressed() {
+    }
+    @Override public void onUpdate() {
+
         Gamepads.gamepad1().rightTrigger().greaterThan(.2).whenBecomesTrue(Flywheel.INSTANCE.shoot);
         Gamepads.gamepad1().a().whenBecomesTrue(Loader.INSTANCE.push);
     }
+    @Override public void onStop() { }
+
 }

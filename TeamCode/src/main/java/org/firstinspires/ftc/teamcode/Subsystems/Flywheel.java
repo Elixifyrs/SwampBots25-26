@@ -34,8 +34,8 @@ public class Flywheel implements Subsystem {
     @Override
     public void initialize(){
         //find motors will have to change the names and may have to reverse the direction of one
-        left = new MotorEx("left_flywheel").brakeMode();
-        right = new MotorEx("right_flywheel").brakeMode().reversed();
+        left = new MotorEx("leftFly").brakeMode();
+        right = new MotorEx("rightFly").brakeMode().reversed();
     }
 
     //the number is ticks or Velocity in (ticks/s)  28 tikcs per rev

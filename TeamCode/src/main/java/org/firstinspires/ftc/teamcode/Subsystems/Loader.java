@@ -19,9 +19,15 @@ public class Loader implements Subsystem {
     private CRServoEx roller;
     private ServoEx pusher;
 
+    private ServoEx load;
+
     @Override
     public void initialize() {
-        roller = new CRServoEx("loader_servo");
+
+        roller = new CRServoEx("wheel");
+        pusher = new ServoEx("hammer");
+        load = new ServoEx("feedSweep");
+
     }
 
 

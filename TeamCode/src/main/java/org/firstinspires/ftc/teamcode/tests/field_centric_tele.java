@@ -31,10 +31,10 @@ public class field_centric_tele extends NextFTCOpMode {
 
     // change the names and directions to suit your robot
     private final MotorEx frontLeftMotor = new MotorEx("leftFront").reversed();
-    private final MotorEx frontRightMotor = new MotorEx("rightFront");
+    private final MotorEx frontRightMotor = new MotorEx("rightFront").reversed();
     private final MotorEx backLeftMotor = new MotorEx("leftBack").reversed();
     private final MotorEx backRightMotor = new MotorEx("rightRear");
-    private IMUEx imu = new IMUEx("imu", Direction.BACKWARD, Direction.UP).zeroed();
+    private IMUEx imu = new IMUEx("imu", Direction.RIGHT, Direction.FORWARD).zeroed();
 
 
     @Override
