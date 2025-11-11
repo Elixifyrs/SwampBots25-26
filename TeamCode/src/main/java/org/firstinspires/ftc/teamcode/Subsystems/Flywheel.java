@@ -58,10 +58,17 @@ public class Flywheel implements Subsystem {
 
             //look at blocks to tune the servos
             new RunToVelocity(controller,1800).requires(this),
-            new SetPosition(pusher,1),
+            new SetPosition(pusher,.9),
             new Delay(.5),
             new SetPosition(pusher, 0)
 
+    );
+
+    public Command shoot_long = new SequentialGroup(
+            new RunToVelocity(controller,2000).requires(this),
+            new SetPosition(pusher,.9),
+            new Delay(.5),
+            new SetPosition(pusher, 0)
     );
 
     public Command stop = new RunToVelocity(controller, 0).requires(this);
