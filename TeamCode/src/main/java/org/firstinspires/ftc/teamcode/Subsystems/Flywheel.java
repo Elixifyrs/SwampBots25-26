@@ -30,7 +30,7 @@ public class Flywheel implements Subsystem {
     //gotta figure out what tis does first
     //i believe its the "tuning" for the velocity for the motor
     ControlSystem controller = ControlSystem.builder()
-            .velPid(0.011,0,0)
+            .velPid(12,3,3)
             .basicFF(0.0005)
             .build();
 
@@ -51,8 +51,13 @@ public class Flywheel implements Subsystem {
     }
 
     //the number is ticks or Velocity in (ticks/s)  28 tikcs per rev
-    public Command shoot = new SequentialGroup(
-            new RunToVelocity(controller,1700).requires(this),
+
+    //1800 top triangle
+    //2000 far triangle
+    public Command shoot_short= new SequentialGroup(
+
+            //look at blocks to tune the servos
+            new RunToVelocity(controller,1800).requires(this),
             new SetPosition(pusher,1),
             new Delay(.5),
             new SetPosition(pusher, 0)

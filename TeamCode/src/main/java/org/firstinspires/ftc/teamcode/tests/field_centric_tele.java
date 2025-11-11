@@ -59,7 +59,7 @@ public class field_centric_tele extends NextFTCOpMode {
         Gamepads.gamepad1().leftTrigger().greaterThan(.2).whenBecomesTrue(Intake.INSTANCE.spin());
 
         //spins the flywheels to shoot the ball
-        Gamepads.gamepad1().rightTrigger().greaterThan(.2).whenBecomesTrue(Flywheel.INSTANCE.shoot);
+        Gamepads.gamepad1().rightTrigger().greaterThan(.2).whenBecomesTrue(Flywheel.INSTANCE.shoot_short);
 
         //set the flywheel/outtake pos
         Gamepads.gamepad1().rightBumper().whenBecomesTrue(Loader.INSTANCE.push).whenBecomesFalse(Loader.INSTANCE.reset);

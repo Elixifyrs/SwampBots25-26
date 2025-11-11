@@ -32,11 +32,12 @@ public class TestShooter extends NextFTCOpMode {
 
     @Override
     public void onStartButtonPressed() {
+        Gamepads.gamepad1().rightTrigger().greaterThan(.2).whenBecomesTrue(Flywheel.INSTANCE.shoot_short);
+        Gamepads.gamepad1().a().whenBecomesTrue(Loader.INSTANCE.push);
     }
     @Override public void onUpdate() {
 
-        Gamepads.gamepad1().rightTrigger().greaterThan(.2).whenBecomesTrue(Flywheel.INSTANCE.shoot);
-        Gamepads.gamepad1().a().whenBecomesTrue(Loader.INSTANCE.push);
+
     }
     @Override public void onStop() { }
 

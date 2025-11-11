@@ -23,10 +23,10 @@ public class Constants {
             .useSecondaryTranslationalPIDF(false)
             .useSecondaryHeadingPIDF(false)
             .useSecondaryDrivePIDF(false)
-            .centripetalScaling(0.0005)
+            .centripetalScaling(0.001)
             .translationalPIDFCoefficients(new com.pedropathing.control.PIDFCoefficients(0.12, 0, 0.01, 0.02))
             .headingPIDFCoefficients(new PIDFCoefficients(1.6, 0, 0.1, .02))
-            .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.1, 0, 0, 0.6, 0));
+            .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.007, 0.001, 0.0002, 0.6, 0.17));
 
 
     public static MecanumConstants driveConstants = new MecanumConstants()
@@ -62,7 +62,7 @@ public class Constants {
     public static PathConstraints pathConstraints = new PathConstraints(
             0.995,
             500,
-            1,
+            .8,
             1
     );
 
