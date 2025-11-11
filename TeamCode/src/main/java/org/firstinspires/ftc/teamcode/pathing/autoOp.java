@@ -94,7 +94,6 @@ public class autoOp extends NextFTCOpMode {
     public void autonomousPathUpdate() {
         switch (pathState) {
             case 0:
-                follower.followPath(moveToShoot, true);
                 //pause
                 //flywheel shoot
                 new Delay(1);
@@ -111,6 +110,7 @@ public class autoOp extends NextFTCOpMode {
                         Loader.INSTANCE.reset,
                         //Shoot second preload
                         Flywheel.INSTANCE.shoot, Flywheel.INSTANCE.stop);
+                follower.followPath(moveToShoot, true);
                 setPathState(1);
                 break;
             case 1:
@@ -123,15 +123,13 @@ public class autoOp extends NextFTCOpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                    follower.followPath(pickupObjects1, true);
                     //stop intake
-                    setPathState(3);
                     Intake.INSTANCE.stop();
-
+                    follower.followPath(pickupObjects1, true);
+                    setPathState(3);
                 }
             case 3:
                 if (!follower.isBusy()) {
-                    follower.followPath(moveToShoot1, true);
                     //pause
                     new Delay(3);
                     //flywheel shoot
@@ -146,14 +144,16 @@ public class autoOp extends NextFTCOpMode {
                             Loader.INSTANCE.reset,
                             //Shoot second preload
                             Flywheel.INSTANCE.shoot, Flywheel.INSTANCE.stop);
+                    follower.followPath(moveToShoot1, true);
                     setPathState(4);
                 }
                 break;
             case 4:
                 if (!follower.isBusy()) {
-                    follower.followPath(moveToObjects2, true);
                     Intake.INSTANCE.spin();
                     //start intake
+                    follower.followPath(moveToObjects2, true);
+
                     setPathState(5);
                 }
                 break;
@@ -167,7 +167,6 @@ public class autoOp extends NextFTCOpMode {
                 break;
             case 6:
                 if (!follower.isBusy()) {
-                    follower.followPath(moveToShoot2, true);
                     //pause
                     new Delay(.5);
                     //flywheel shoot
@@ -184,14 +183,15 @@ public class autoOp extends NextFTCOpMode {
                             Flywheel.INSTANCE.shoot,
                             Flywheel.INSTANCE.stop
                     );
+                    follower.followPath(moveToShoot2, true);
                     setPathState(7);
                 }
                 break;
             case 7:
                 if (!follower.isBusy()) {
-                    follower.followPath(moveToObjects3, true);
                     //start intake
                     Intake.INSTANCE.spin();
+                    follower.followPath(moveToObjects3, true);
                     setPathState(8);
                 }
                 break;
@@ -205,7 +205,6 @@ public class autoOp extends NextFTCOpMode {
                 break;
             case 9:
                 if (!follower.isBusy()) {
-                    follower.followPath(moveToShoot3, true);
                     //pause
                     new Delay(.5);
                     //flywheel shoot
@@ -222,6 +221,7 @@ public class autoOp extends NextFTCOpMode {
                             Flywheel.INSTANCE.shoot,
                             Flywheel.INSTANCE.stop
                     );
+                    follower.followPath(moveToShoot3, true);
                     setPathState(10);
                 }
                 break;
