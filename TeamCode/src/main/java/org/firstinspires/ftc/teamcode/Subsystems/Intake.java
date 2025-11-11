@@ -18,7 +18,7 @@ public class Intake implements Subsystem {
 
     public Command spin(){
       //set power = spin should be self explanatory here
-      return new SetPower(motor,1);
+      return new SetPower(motor,.6);
     }
 
     public Command stop(){
@@ -30,6 +30,6 @@ public class Intake implements Subsystem {
         //may have to reverse depending on the robot
         //tells what motor from hardwaremap will have to change to what it says on driver hub
 
-        motor = new MotorEx("intake").brakeMode();
+        motor = new MotorEx("intake").brakeMode().reversed();
     }
 }
