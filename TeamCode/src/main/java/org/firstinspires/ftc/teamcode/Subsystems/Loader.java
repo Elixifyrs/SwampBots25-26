@@ -19,14 +19,11 @@ public class Loader implements Subsystem {
     private CRServoEx roller;
     private ServoEx pusher;
 
-    private ServoEx load;
-
     @Override
     public void initialize() {
 
         roller = new CRServoEx("wheel");
-        pusher = new ServoEx("hammer");
-        load = new ServoEx("feedSweep");
+        pusher = new ServoEx("feedSweep");
 
     }
 
@@ -34,9 +31,12 @@ public class Loader implements Subsystem {
     //Positions will vary based on things like
     //pushes the ball into the flywheel
     public Command push = new SequentialGroup(
+            //turns the roller to push
             new SetPower(roller,0.5),
-            new Delay(2),
+            //the pusher, pushes the ball into position if not already loaded
             new SetPosition(pusher,1)
+
+
     );
 
     //resets the pusher to rest

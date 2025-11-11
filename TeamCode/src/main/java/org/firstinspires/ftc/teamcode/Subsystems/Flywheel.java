@@ -6,10 +6,13 @@ import dev.nextftc.control.KineticState;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.commands.delays.Delay;
 import dev.nextftc.core.commands.groups.ParallelGroup;
+import dev.nextftc.core.commands.groups.SequentialGroup;
 import dev.nextftc.core.subsystems.Subsystem;
 import dev.nextftc.ftc.Gamepads;
 import dev.nextftc.hardware.controllable.MotorGroup;
+import dev.nextftc.hardware.controllable.RunToPosition;
 import dev.nextftc.hardware.controllable.RunToVelocity;
+import dev.nextftc.hardware.impl.CRServoEx;
 import dev.nextftc.hardware.impl.MotorEx;
 import dev.nextftc.hardware.impl.ServoEx;
 import dev.nextftc.hardware.positionable.SetPosition;
@@ -22,6 +25,8 @@ public class Flywheel implements Subsystem {
     private MotorEx left;
     private MotorEx right;
 
+    private ServoEx pusher;
+
     //gotta figure out what tis does first
     //i believe its the "tuning" for the velocity for the motor
     ControlSystem controller = ControlSystem.builder()
@@ -31,15 +36,28 @@ public class Flywheel implements Subsystem {
 
 //    MotorGroup man = new MotorGroup(left,right);
 
+    ControlSystem pusher_control = ControlSystem.builder()
+            .velPid(0.011,0,0)
+            .basicFF(0.0005)
+            .build();
+
     @Override
     public void initialize(){
         //find motors will have to change the names and may have to reverse the direction of one
         left = new MotorEx("leftFly").brakeMode();
         right = new MotorEx("rightFly").brakeMode().reversed();
+        pusher = new ServoEx("hammer");
+
     }
 
     //the number is ticks or Velocity in (ticks/s)  28 tikcs per rev
-    public Command shoot = new RunToVelocity(controller,1700).requires(this);
+    public Command shoot = new SequentialGroup(
+            new RunToVelocity(controller,1700).requires(this),
+            new SetPosition(pusher,1),
+            new Delay(.5),
+            new SetPosition(pusher, 0)
+
+    );
 
     public Command stop = new RunToVelocity(controller, 0).requires(this);
 
@@ -56,5 +74,6 @@ public class Flywheel implements Subsystem {
                         new KineticState(right.getCurrentPosition(),right.getVelocity(),right.getState().getAcceleration())
                 )
         );
+
     }
 }
