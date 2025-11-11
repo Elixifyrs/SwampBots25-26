@@ -18,7 +18,7 @@ public class Intake implements Subsystem {
 
     public Command spin(){
       //set power = spin should be self explanatory here
-      return new SetPower(motor,.6);
+      return new SetPower(motor,1);
     }
 
     public Command stop(){

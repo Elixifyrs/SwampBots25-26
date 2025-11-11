@@ -34,7 +34,7 @@ public class Loader implements Subsystem {
             //
 
             //turns the roller to push
-            new SetPower(roller,-0.1),
+            new SetPower(roller,-1),
             //the pusher, pushes the ball into position if not already loaded
             new SetPosition(pusher,.9)
     );
