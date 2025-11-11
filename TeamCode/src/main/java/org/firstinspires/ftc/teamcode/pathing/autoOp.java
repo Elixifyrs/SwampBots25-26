@@ -131,7 +131,7 @@ public class autoOp extends NextFTCOpMode {
                 //for shooting 2 balls
                 new SequentialGroup(
                         //flywheel shoot,
-                        Flywheel.INSTANCE.shoot,
+                        Flywheel.INSTANCE.shoot_short,
                         //stop the flys
                         Flywheel.INSTANCE.stop,
                         //load next ball
@@ -139,7 +139,7 @@ public class autoOp extends NextFTCOpMode {
                         //reset the loader
                         Loader.INSTANCE.reset,
                         //Shoot second preload
-                        Flywheel.INSTANCE.shoot, Flywheel.INSTANCE.stop);
+                        Flywheel.INSTANCE.shoot_short, Flywheel.INSTANCE.stop);
                 setPathState(1);
                 break;
             case 1:
@@ -165,7 +165,7 @@ public class autoOp extends NextFTCOpMode {
                     //flywheel shoot
                     new SequentialGroup(
                             //flywheel shoot,
-                            Flywheel.INSTANCE.shoot,
+                            Flywheel.INSTANCE.shoot_short,
                             //stop the flys
                             Flywheel.INSTANCE.stop,
                             //load next ball
@@ -173,7 +173,7 @@ public class autoOp extends NextFTCOpMode {
                             //reset the loader
                             Loader.INSTANCE.reset,
                             //Shoot second preload
-                            Flywheel.INSTANCE.shoot, Flywheel.INSTANCE.stop);
+                            Flywheel.INSTANCE.shoot_short, Flywheel.INSTANCE.stop);
                     setPathState(4);
                 }
                 break;
@@ -202,7 +202,7 @@ public class autoOp extends NextFTCOpMode {
                     //flywheel shoot
                     new SequentialGroup(
                             //flywheel shoot,
-                            Flywheel.INSTANCE.shoot,
+                            Flywheel.INSTANCE.shoot_short,
                             //stop the flys
                             Flywheel.INSTANCE.stop,
                             //load next ball
@@ -210,7 +210,7 @@ public class autoOp extends NextFTCOpMode {
                             //reset the loader
                             Loader.INSTANCE.reset,
                             //Shoot second preload
-                            Flywheel.INSTANCE.shoot,
+                            Flywheel.INSTANCE.shoot_short,
                             Flywheel.INSTANCE.stop
                     );
                     setPathState(7);
@@ -240,7 +240,7 @@ public class autoOp extends NextFTCOpMode {
                     //flywheel shoot
                     new SequentialGroup(
                             //flywheel shoot,
-                            Flywheel.INSTANCE.shoot,
+                            Flywheel.INSTANCE.shoot_short,
                             //stop the flys
                             Flywheel.INSTANCE.stop,
                             //load next ball
@@ -248,7 +248,7 @@ public class autoOp extends NextFTCOpMode {
                             //reset the loader
                             Loader.INSTANCE.reset,
                             //Shoot second preload
-                            Flywheel.INSTANCE.shoot,
+                            Flywheel.INSTANCE.shoot_short,
                             Flywheel.INSTANCE.stop
                     );
                     setPathState(10);
