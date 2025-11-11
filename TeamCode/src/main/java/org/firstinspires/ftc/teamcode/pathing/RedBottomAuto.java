@@ -4,12 +4,9 @@ package org.firstinspires.ftc.teamcode.pathing;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
-import com.pedropathing.paths.Path;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Flywheel;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
@@ -17,12 +14,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Lift;
 import org.firstinspires.ftc.teamcode.Subsystems.Loader;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 
-import java.time.Duration;
-
-import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.commands.delays.Delay;
-import dev.nextftc.core.commands.groups.CommandGroup;
-import dev.nextftc.core.commands.groups.ParallelGroup;
 import dev.nextftc.core.commands.groups.SequentialGroup;
 import dev.nextftc.core.components.BindingsComponent;
 import dev.nextftc.core.components.SubsystemComponent;
@@ -38,9 +30,9 @@ import dev.nextftc.ftc.components.BulkReadComponent;
  *
  * */
 @Autonomous(name = "TestAuto", group = "Examples")
-public class autoOp extends NextFTCOpMode {
+public class RedBottomAuto extends NextFTCOpMode {
 
-    public autoOp() {
+    public RedBottomAuto() {
         addComponents(new SubsystemComponent(Intake.INSTANCE, Flywheel.INSTANCE, Loader.INSTANCE, Lift.INSTANCE), BulkReadComponent.INSTANCE, BindingsComponent.INSTANCE);
     }
 
@@ -57,12 +49,12 @@ public class autoOp extends NextFTCOpMode {
     private final Pose shootPoseCloseRed = new Pose(84, 84, Math.toRadians(45)); //CHANGE ONCE VELOCITY DEFINED
 
     //object poses top to bottom
-    private final Pose objects1 = new Pose(96, 84, Math.toRadians(180));
-    private final Pose endpickup1 = new Pose(115, 84, Math.toRadians(180));
-    private final Pose objects2 = new Pose(96, 60, Math.toRadians(180));
-    private final Pose endpickup2 = new Pose(115, 60, Math.toRadians(180));
-    private final Pose objects3 = new Pose(96, 36, Math.toRadians(180));
-    private final Pose endpickup3 = new Pose(115, 36, Math.toRadians(180));
+    private final Pose RedObjects1 = new Pose(96, 84, Math.toRadians(180));
+    private final Pose RedEndpickup1 = new Pose(115, 84, Math.toRadians(180));
+    private final Pose RedObjects2 = new Pose(96, 60, Math.toRadians(180));
+    private final Pose RedEndpickup2 = new Pose(115, 60, Math.toRadians(180));
+    private final Pose RedObjects3 = new Pose(96, 36, Math.toRadians(180));
+    private final Pose RedEndpickup3 = new Pose(115, 36, Math.toRadians(180));
 
     private PathChain moveToShoot, moveToObjects1, pickupObjects1, moveToShoot1, moveToObjects2, pickupObjects2, moveToShoot2, moveToObjects3, pickupObjects3, moveToShoot3;
 
@@ -75,48 +67,48 @@ public class autoOp extends NextFTCOpMode {
                 .build();
 
         moveToObjects1 = follower.pathBuilder()
-                .addPath(new BezierLine(shootPoseFarRed, objects1))
-                .setLinearHeadingInterpolation(shootPoseFarRed.getHeading(), objects1.getHeading())
+                .addPath(new BezierLine(shootPoseFarRed, RedObjects1))
+                .setLinearHeadingInterpolation(shootPoseFarRed.getHeading(), RedObjects1.getHeading())
                 .build();
 
         pickupObjects1 = follower.pathBuilder()
-                .addPath(new BezierLine(objects1, endpickup1))
+                .addPath(new BezierLine(RedObjects1, RedEndpickup1))
                 .setConstantHeadingInterpolation(Math.toRadians(180))
                 .build();
 
         moveToShoot1 = follower.pathBuilder()
-                .addPath(new BezierLine(endpickup1, shootPoseFarRed))
-                .setLinearHeadingInterpolation(endpickup1.getHeading(), shootPoseFarRed.getHeading())
+                .addPath(new BezierLine(RedEndpickup1, shootPoseFarRed))
+                .setLinearHeadingInterpolation(RedEndpickup1.getHeading(), shootPoseFarRed.getHeading())
                 .build();
 
         moveToObjects2 = follower.
-                pathBuilder().addPath(new BezierLine(shootPoseFarRed, objects2))
-                .setLinearHeadingInterpolation(shootPoseFarRed.getHeading(), objects2.getHeading())
+                pathBuilder().addPath(new BezierLine(shootPoseFarRed, RedObjects2))
+                .setLinearHeadingInterpolation(shootPoseFarRed.getHeading(), RedObjects2.getHeading())
                 .build();
 
         pickupObjects2 = follower.pathBuilder()
-                .addPath(new BezierLine(objects2, endpickup2))
+                .addPath(new BezierLine(RedObjects2, RedEndpickup2))
                 .setConstantHeadingInterpolation(Math.toRadians(180))
                 .build();
 
         moveToShoot2 = follower.pathBuilder()
-                .addPath(new BezierLine(endpickup2, shootPoseFarRed))
-                .setLinearHeadingInterpolation(endpickup2.getHeading(), shootPoseFarRed.getHeading())
+                .addPath(new BezierLine(RedEndpickup2, shootPoseFarRed))
+                .setLinearHeadingInterpolation(RedEndpickup2.getHeading(), shootPoseFarRed.getHeading())
                 .build();
 
         moveToObjects3 = follower.pathBuilder()
-                .addPath(new BezierLine(shootPoseFarRed, objects3))
-                .setLinearHeadingInterpolation(shootPoseFarRed.getHeading(), objects3.getHeading())
+                .addPath(new BezierLine(shootPoseFarRed, RedObjects3))
+                .setLinearHeadingInterpolation(shootPoseFarRed.getHeading(), RedObjects3.getHeading())
                 .build();
 
         pickupObjects3 = follower.pathBuilder()
-                .addPath(new BezierLine(objects3, endpickup3))
+                .addPath(new BezierLine(RedObjects3, RedEndpickup3))
                 .setConstantHeadingInterpolation(Math.toRadians(180))
                 .build();
 
         moveToShoot3 = follower.pathBuilder()
-                .addPath(new BezierLine(endpickup3, shootPoseFarRed))
-                .setLinearHeadingInterpolation(endpickup3.getHeading(), shootPoseFarRed.getHeading())
+                .addPath(new BezierLine(RedEndpickup3, shootPoseFarRed))
+                .setLinearHeadingInterpolation(RedEndpickup3.getHeading(), shootPoseFarRed.getHeading())
                 .build();
 
     }
